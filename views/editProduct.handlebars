@@ -1,0 +1,24 @@
+<div class= "row-list">
+<h1>Edit product</h1>
+
+<form action="/products/update/{{data.id}}" method="POST">
+	<div class="">
+		<h4>Product</h4>
+		<input type="text" name="product" value="{{data.product}}">
+	</div>
+
+	<div class="">
+		<h4>Category</h4>
+		<!-- <select class="" name="category_id"> -->
+			<select class="browser-default" name="category_id">
+				{{#categories}}
+					<option value="{{id}}">{{category}}</option>
+				{{/categories}}
+			</select>
+	</div>
+	<hr>
+<input
+	<button type ="submit" class="btn btn-primary"> </button>
+	<!-- <input type="submit" value="Edit Product"> -->
+</form>
+</div>

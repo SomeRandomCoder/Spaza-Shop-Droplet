@@ -1,0 +1,44 @@
+
+  <form action ="/purchases/search/" method="POST">
+     <input id="searchBar" type="text" name="searchVal" placeholder="Search.." >
+    <!-- <button> <input type="submit" value="submit"></button> -->
+
+  </form>
+  <ul  id="purchasesSearch" class="row-list" >
+
+  <li class="col-md-2 head">Date</li>
+  <li class="col-md-4 head">Product</li>
+  <li class="col-md-1 head">Quantity</li>
+  <li class="col-md-1 head">Unit Price</li>
+  <li class="col-md-2 head">Shop</li>
+
+  <a href="purchases/addPurchases"><div class="btn btn-primary col-md-2 ">Add Purchase</div></a>
+        {{#purchases}}
+
+
+        <li class="col-md-2 db-List"> {{Date}}</li>
+        <li class="col-md-4 db-List"> {{product}}</li>
+        <li class="col-md-1 db-List"> {{quantity}}</li>
+        <li class="col-md-1 db-List"> {{cost}}</li>
+        <li class="col-md-2 db-List"> {{shop}}</li>
+
+        <a href="purchases/editPurchases/{{id}}"><div class="btn btn-primary col-md-1">edit</div></a>
+        <a href="purchases/delete/{{id}}"><div class="btn btn-primary col-md-1 ">delete</div></a>
+        {{/purchases}}
+    </ul>
+
+    <script>
+    $(document).ready(function() {
+      $('#searchBar').keyup(function(){
+        var searchVal= $("#searchBar").val();
+        $.get("/purchases/search/" + searchVal, function(results){
+          console.log(searchVal);
+          $("#purchasesSearch").html(results)
+        });
+        if(searchVal.length === 0){
+          location.reload();
+        }
+      })
+
+    })
+    </script>

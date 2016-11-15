@@ -1,0 +1,41 @@
+  <form action ="/users/search/" method="POST">
+     <input type="text" id="searchBar" name="searchVal" placeholder="Search.." >
+    <!-- <button> <input type="submit" value="submit"></button> -->
+
+  </form>
+  <ul id="usersSearch" class="row-list">
+
+  <li class="col-md-4 head"><b>User</b></li>
+  <li class="col-md-2 head"><b>Admin</b></li>
+  <li class="col-md-2 head"><b>Locked</b></li>
+  <li class="col-md-4 db-List"></li>
+
+
+
+
+        {{#users}}
+
+          <li class="col-md-4 db-List"> {{username}}</li>
+          <li class="col-md-2 db-List">{{admin}}</li>
+          <li class="col-md-2 db-List">{{locked}}</li>
+
+          <a href="/users/editUsers/{{id}}" class="btn btn-primary col-md-2 ">Edit</a>
+          <a href="/users/delete/{{id}}" class="btn btn-primary col-md-2 ">Delete</a>
+        {{/users}}
+    </ul>
+
+    <script>
+    $(document).ready(function() {
+      $('#searchBar').keyup(function(){
+        var searchVal= $("#searchBar").val();
+        $.get("/users/search/" + searchVal, function(results){
+          console.log(searchVal);
+          $("#usersSearch").html(results)
+        });
+        if(searchVal.length === 0){
+          location.reload();
+        }
+      })
+
+    })
+    </script>

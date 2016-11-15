@@ -1,0 +1,28 @@
+<div class="row-list">
+<h1>Add Sale</h1>
+
+<form action="/sales/addSales" method="POST">
+  <div>
+    <h4>date</h4>
+    <input class="datepicker" type="date" name="date" value="{{data.date}}">
+  </div>
+  <div>
+    <h4>quantity</h4>
+    <input type="number" name="sold" value="{{data.sold}}">
+  </div>
+  <h4>Product</h4>
+  <select class="browser-default" name="product_id">
+    {{#sales}}
+    <option value="{{id}}"> {{product}}</option>
+    {{/sales}}
+  </select>
+  <div>
+    
+    <h4 for="price">price</h4l>
+    <input type="text" name="price" value="{{data.price}}">
+  </div>
+  <input
+  	<button type ="submit" class="btn btn-primary"> </button>
+
+</form>
+</div>

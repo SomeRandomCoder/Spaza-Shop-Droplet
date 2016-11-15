@@ -1,0 +1,34 @@
+<form action ="/categories/search/" method="POST">
+   <input id="searchBar"="text" name="searchVal" placeholder="Search.." >
+  <!-- <button> <input type="submit" value="submit"></button> -->
+
+</form>
+
+<ul id="categoriesSearch"  class="row-list">
+  <li class="col-md-12 head"><b>Category</b></li>
+
+
+
+        {{#categories}}
+
+          <li class="col-md-12 db-List"> {{category}}</li>
+        {{/categories}}
+
+
+    </ul>
+
+    <script>
+    $(document).ready(function() {
+      $('#searchBar').keyup(function(){
+        var searchVal= $("#searchBar").val();
+        $.get("/categories/search/" + searchVal, function(results){
+          console.log(searchVal);
+          $("#categoriesSearch").html(results)
+        });
+        if(searchVal.length === 0){
+          location.reload();
+        }
+      })
+
+    })
+    </script>

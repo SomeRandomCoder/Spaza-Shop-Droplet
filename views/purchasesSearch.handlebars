@@ -1,0 +1,22 @@
+<ul class="row-list">
+  <!-- <form action ="/purchases/search/" method="POST">
+     <input type="text" name="search" placeholder="Search.." >
+    <button> <input type="submit" value="submit"></button>
+
+  </form> -->
+  <li class="col-md-3 head">Date</li>
+  <li class="col-md-4 head">Product</li>
+  <li class="col-md-1 head">Quantity</li>
+  <li class="col-md-1 head">Unit Price</li>
+  <li class="col-md-3 head">Shop</li>
+        {{#search}}
+        <li class="col-md-3 db-List"> {{Date}}</li>
+        <li class="col-md-4 db-List"> {{product}}</li>
+        <li class="col-md-1 db-List"> {{Quantity}}</li>
+        <li class="col-md-1 db-List"> {{Cost}}</li>
+        <li class="col-md-3 db-List"> {{Shop}}</li>
+
+        {{/search}}
+        <a href="" class="btn btn-primary" role="button" onClick="history.go(-1); return true;">Back</a>
+
+    </ul>

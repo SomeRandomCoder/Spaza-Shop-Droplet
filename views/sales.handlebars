@@ -1,0 +1,41 @@
+
+  <form action ="/sales/search/" method="POST">
+     <input id="searchBar" type="text" name="searchVal" placeholder="Search.." >
+    <!-- <button> <input type="submit" value="submit"></button> -->
+
+  </form>
+
+  <ul id="salesSearch" class="row-list">
+
+  <li class="col-md-2 head">Date</li>
+  <li class="col-md-4 head">Product</li>
+  <li class="col-md-2 head">Amount Sold</li>
+  <li class="col-md-2 head">Unit Price</li>
+  <a href="sales/addSales"><div class="btn btn-primary col-md-2">Add Sale</div></a>
+        {{#sales}}
+
+
+        <li class="col-md-2 db-List"> {{date}}</li>
+        <li class="col-md-4 db-List"> {{product}}</li>
+        <li class="col-md-2 db-List"> {{sold}}</li>
+        <li class="col-md-2 db-List"> {{price}}</li>
+        <a href="sales/editSales/{{id}}"><div class="btn btn-primary col-md-1 ">edit</div></a>
+        <a href="sales/delete/{{id}}"><div class="btn btn-primary col-md-1 ">delete</div></a>
+        {{/sales}}
+    </ul>
+
+    <script>
+    $(document).ready(function() {
+      $('#searchBar').keyup(function(){
+        var searchVal= $("#searchBar").val();
+        $.get("/sales/search/" + searchVal, function(results){
+          console.log(searchVal);
+          $("#salesSearch").html(results)
+        });
+        if(searchVal.length === 0){
+          location.reload();
+        }
+      })
+
+    })
+    </script>
